@@ -12,7 +12,7 @@ profile: 'dbt_airflow'
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
 # found in the "models/" directory. You probably won't need to change these!
-model-paths: ["models"]
+model-paths: ["dbt_airflow/models"]
 analysis-paths: ["analyses"]
 test-paths: ["tests"]
 seed-paths: ["seeds"]
@@ -33,5 +33,16 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   dbt_airflow:
     # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
+    challenge:
+      bibliotecas:
+        +materialized: table
+      cines:
+        +materialized: table
+      museos:
+        +materialized: table
+      cines_insights:
+        +materialized: table
+      size_by_categoty_province:
+        +materialized: table
+      size_by_category:
+        +materialized: table

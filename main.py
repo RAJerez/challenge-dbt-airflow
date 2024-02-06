@@ -21,7 +21,7 @@ def run_load():
         except Exception as e:
             # Excepciones generales
             print(f"Error inesperado: {e}")
-            
+
 
 if __name__ == "__main__":
     run_load()
