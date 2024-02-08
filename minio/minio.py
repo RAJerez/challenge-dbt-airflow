@@ -23,10 +23,15 @@ def create_buckets() -> None:
 
         except ClientError as e:
             log.info(f"Error: {e}")
+    
+def load_files() -> None:   
+    s3.upload_file('/home/agustin/Documentos/minio-dbt-airflow/csv-data/bibliotecas.csv', 'raw', 'bibliotecas.csv')        
+
 
 
 if __name__ == "__main__":
     create_buckets()
+    load_files()
 
 
 ## Upload a file to the bucket

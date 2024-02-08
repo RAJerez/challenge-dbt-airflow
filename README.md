@@ -55,7 +55,7 @@ Automaticamente se creara un entorno virtual al cual puede acceder
 poetry shell
 ```
 
-#### Opción sin Poetry
+#### Option without Poetry
 En caso de no usar poetry puede instalar las dependencias a traves de requirements.txt
 El proyecto se realizó con Python 3.10
 ```bash
@@ -64,30 +64,30 @@ source venv/bin/activate
 pip install -r 'requirements.txt'
 ```
 
-## Creación de base de datos, tablas y ejecución de pipeline
-Levanto contenedor con Base de datos Postgres:
+## Creation of the database, tables and execution of data pipeline
+Raise container with Postgres database:
 ```bash
 sudo docker compose up -d
 ```
 
-Puede acceder a la base de datos desde bash:
+You can access the database through the bash terminal
 ```bash
 docker exec -it postgres psql -U postgres -d data-challenge-dbt
 ```
 
-Carga de datos crudos en base de datos
+Loading raw data into database
 El siguiente script realiza la conexión con la base de datos y realiza la carga.
 ```bash
 python3 main.py
 ```
 
-Ejecutar modelos de dbt:
+Run DBT models:
 ```bash
 dbt run
 ```
 
 
-## Instalacion de Airflow
+## Airflow Installation
 
 
 ```bash
