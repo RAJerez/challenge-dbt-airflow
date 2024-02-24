@@ -9,12 +9,12 @@ engine = create_engine(DB_CONNSTR)
 class BaseLoader:
     def load_table(self, df):
         df.to_sql(self.table_name, con=engine, index=False, if_exists="replace")
-        
-        
+
+
 class RawLoader(BaseLoader):
     def __init__(self, table_name):
         self.table_name = table_name
-    
-    def load_table(self, file_path):
-        df_raw = pd.read_csv(file_path)
+
+    def load_table(self, file_path, separator):
+        df_raw = pd.read_csv(file_path, sep = separator)
         return super().load_table(df_raw)

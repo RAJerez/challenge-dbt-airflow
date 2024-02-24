@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: venta
+    schema: public
+    tables:
+      columns:
+        - name: id_venta
+          description: "Primary Key"
+          tests:
+            - not_null
+        - name: fecha
+          description: "Fecha de la venta"
+          tests:
+            - not_null
+        - name: fecha_entrega
+          description: "Fecha de entrega"
+          tests:
+            - not_null
+        - name: id_canal
+          tests:
+            - not_null
+        - name: id_cliente
+          tests:
+            - not_null
+        - name: id_sucursal
+          tests:
+            - not_null
+        - name: id_empleado
+          tests:
+            - not_null
+        - name: id_producto
+          tests:
+            - not_null
+        - name: precio
+          description: "Precio unitario"
+          tests:
+            - not_null
+        - name: cantidad
+          description: "Cantidad vendida"
+          tests:
+            - not_null
+            - accepted_values: {min: 0}
+
+  - name: venta
+    schema: public
+    tables:
+      columns:
+        - name: id_venta
+          description: "Primary Key"
+          tests:
+            - not_null

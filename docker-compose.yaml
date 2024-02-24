@@ -49,8 +49,8 @@ x-airflow-common:
   # In order to add custom dependencies or upgrade provider packages you can use your extended image.
   # Comment the image line, place your Dockerfile in the directory where you placed the docker-compose.yaml
   # and uncomment the "build" line below, Then run `docker-compose build` to build the images.
-  image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:2.8.1}
-  # build: .
+  #image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:2.8.1}
+  build: ./airflow/docker
   environment:
     &airflow-common-env
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
@@ -72,8 +72,9 @@ x-airflow-common:
   volumes:
     - ./airflow/dags:/opt/airflow/dags
     - ./airflow/logs:/opt/airflow/logs
-    - ./airflow/config:/opt/airflow/config
+    - ./airflow/config:/opt/airflow/config.cfg
     - ./airflow/plugins:/opt/airflow/plugins
+    - ./dbt_airflow:/opt/dbt
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
@@ -281,33 +282,29 @@ services:
       airflow-init:
         condition: service_completed_successfully
   
+  #########
+  # MINIO #
+  #########
+
   s3_minio:
-    image: minio/minio:latest
+    #image: minio/minio:latest
+    build: ./minio/docker
     ports:
       - "9000:9000"
       - "9090:9090"
     volumes:
       - minio_storage:/data
+      - ./minio:/minio
     environment:
       MINIO_ACCESS_KEY: ${MINIO_ACCESS_KEY}
       MINIO_SECRET_KEY: ${MINIO_SECRET_KEY}
     command: server /data --console-address ":9090" 
     restart: always
 
-  s3_minio_buckets:
-    image: minio/mc
-    depends_on:
-        - s3_minio
-    entrypoint: >
-        /bin/sh -c "
-        /usr/bin/mc config host add s3_minio http://host.docker.internal:9000 minio_admin minio_password;
-        /usr/bin/mc rm -r --force s3_minio/raw;
-        /usr/bin/mc mb s3_minio/raw;
-        /usr/bin/mc rm -r --force s3_minio/dbt;
-        /usr/bin/mc mb s3_minio/dbt;
-        exit 0;
-        "
-  
+  ############
+  # DATABASE #
+  ############
+
   postgres-db:
     image: postgres:13
     container_name: postgres-db

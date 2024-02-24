@@ -1,5 +1,5 @@
 from airflow import DAG
-from airflow.operators.python import PythonOperator
+from airflow.operators.bash_operator import BashOperator
 from airflow.utils.dates import days_ago
 
 default_args = {
@@ -19,13 +19,14 @@ dag = DAG(
     catchup = False
 )
 
-def run_dbt():
-    import os
-    os.system("poetry shell && dbt run")
+run_dbt_command = """
+source /home/agustin/.cache/pypoetry/virtualenvs/dbt-airflow-5EcEiW5e-py3.10/bin/activate &&
+dbt rub
+"""
 
-run_dbt_virtualenv = PythonOperator(
+run_dbt_virtualenv = BashOperator(
     task_id = 'ejecutar_dbt_run_virtualenv',
-    python_callable = run_dbt,
+    bash_command = run_dbt_command,
     dag = dag
 )
 
