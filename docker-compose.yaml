@@ -289,12 +289,13 @@ services:
   s3_minio:
     #image: minio/minio:latest
     build: ./minio/docker
+    container_name: minio
     ports:
       - "9000:9000"
       - "9090:9090"
     volumes:
-      - minio_storage:/data
-      - ./minio:/minio
+      - ./minio_storage:/data
+      #- ./minio:/minio
     environment:
       MINIO_ACCESS_KEY: ${MINIO_ACCESS_KEY}
       MINIO_SECRET_KEY: ${MINIO_SECRET_KEY}

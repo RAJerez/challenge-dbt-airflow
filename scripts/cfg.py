@@ -9,6 +9,11 @@ POSTGRES_DB = config("POSTGRES_DB")
 SOURCE_PATH = config("SOURCE_PATH")
 DB_CONNSTR = f'postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}'
 
+BUCKET = config("BUCKET")
+ENDPOINT_URL = config("ENDPOINT_URL")
+MINIO_ACCESS_KEY = config("MINIO_ACCESS_KEY")
+MINIO_SECRET_KEY = config("MINIO_SECRET_KEY")
+
 paths_dict = {
     "canal_venta": "CanalDeVenta.csv",
     "cliente": "Clientes.csv",
