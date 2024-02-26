@@ -4,11 +4,11 @@ import pandas as pd
 
 
 engine = create_engine(DB_CONNSTR)
-
+schema = "bronze"
 
 class BaseLoader:
     def load_table(self, df):
-        df.to_sql(self.table_name, con=engine, index=False, if_exists="replace")
+        df.to_sql(self.table_name, con=engine, schema=schema, index=False, if_exists="replace")
 
 
 class RawLoader(BaseLoader):

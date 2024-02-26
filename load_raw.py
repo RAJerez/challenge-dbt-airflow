@@ -1,8 +1,9 @@
+# This script load the raw data to MinIO
 from minio_lib import MinIO
-import logging
+from logger import Logger
 from cfg import BUCKET, ENDPOINT_URL, MINIO_ACCESS_KEY, MINIO_SECRET_KEY, SOURCE_PATH, paths_dict
 
-log = logging.getLogger()
+log = Logger()
 
 bucket_name = BUCKET
 endpoint_url = ENDPOINT_URL
@@ -22,7 +23,7 @@ def create_bucket_load_raw():
         local_file_path = SOURCE_PATH + file
         key = f"bronze/{file}"
         minio_client.load_files(local_file_path, key)
-        print(f"Loading file {name}...")
+        log.info(f"Loading file {name}...")
     
 if __name__ == "__main__":
     create_bucket_load_raw()

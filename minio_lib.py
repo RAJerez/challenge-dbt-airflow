@@ -23,6 +23,7 @@ class MinIO:
         except ClientError as e:
             self.logger.error(f"Error: {e}")
     
+    
     def load_files(self, local_file_path: str, s3_key: str) -> None:
         try:
             self.s3.upload_file(local_file_path, self.bucket_name, s3_key)

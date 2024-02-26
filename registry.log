@@ -1,0 +1,216 @@
+2024-02-25 20:08:16,314 - MainThread - MainProcess - INFO - Data canal_venta loaded correctly
+2024-02-25 20:08:16,889 - MainThread - MainProcess - INFO - Data cliente loaded correctly
+2024-02-25 20:08:17,807 - MainThread - MainProcess - INFO - Data compra loaded correctly
+2024-02-25 20:08:17,906 - MainThread - MainProcess - INFO - Data empleado loaded correctly
+2024-02-25 20:08:18,348 - MainThread - MainProcess - INFO - Data gasto loaded correctly
+2024-02-25 20:08:18,425 - MainThread - MainProcess - INFO - Data producto loaded correctly
+2024-02-25 20:08:18,503 - MainThread - MainProcess - INFO - Data proveedor loaded correctly
+2024-02-25 20:08:18,570 - MainThread - MainProcess - INFO - Data sucursal loaded correctly
+2024-02-25 20:08:18,637 - MainThread - MainProcess - INFO - Data tipo_gasto loaded correctly
+2024-02-25 20:08:22,855 - MainThread - MainProcess - INFO - Data venta loaded correctly
+2024-02-25 20:24:09,063 - MainThread - MainProcess - INFO - Data canal_venta loaded correctly
+2024-02-25 20:24:09,448 - MainThread - MainProcess - INFO - Data cliente loaded correctly
+2024-02-25 20:24:10,182 - MainThread - MainProcess - INFO - Data compra loaded correctly
+2024-02-25 20:24:10,271 - MainThread - MainProcess - INFO - Data empleado loaded correctly
+2024-02-25 20:24:10,657 - MainThread - MainProcess - INFO - Data gasto loaded correctly
+2024-02-25 20:24:10,735 - MainThread - MainProcess - INFO - Data producto loaded correctly
+2024-02-25 20:24:10,813 - MainThread - MainProcess - INFO - Data proveedor loaded correctly
+2024-02-25 20:24:10,891 - MainThread - MainProcess - INFO - Data sucursal loaded correctly
+2024-02-25 20:24:10,958 - MainThread - MainProcess - INFO - Data tipo_gasto loaded correctly
+2024-02-25 20:24:14,593 - MainThread - MainProcess - INFO - Data venta loaded correctly
+2024-02-25 20:32:22,529 - MainThread - MainProcess - INFO - Data canal_venta loaded correctly
+2024-02-25 20:32:22,982 - MainThread - MainProcess - INFO - Data cliente loaded correctly
+2024-02-25 20:32:23,738 - MainThread - MainProcess - INFO - Data compra loaded correctly
+2024-02-25 20:32:23,827 - MainThread - MainProcess - INFO - Data empleado loaded correctly
+2024-02-25 20:32:24,383 - MainThread - MainProcess - INFO - Data gasto loaded correctly
+2024-02-25 20:32:24,489 - MainThread - MainProcess - INFO - Data producto loaded correctly
+2024-02-25 20:32:24,590 - MainThread - MainProcess - INFO - Data proveedor loaded correctly
+2024-02-25 20:32:24,679 - MainThread - MainProcess - INFO - Data sucursal loaded correctly
+2024-02-25 20:32:24,756 - MainThread - MainProcess - INFO - Data tipo_gasto loaded correctly
+2024-02-25 20:32:28,375 - MainThread - MainProcess - INFO - Data venta loaded correctly
+2024-02-25 20:33:46,298 - MainThread - MainProcess - ERROR - Error loading data canal_venta: (psycopg2.errors.InvalidSchemaName) schema "bronze" does not exist
+LINE 2: CREATE TABLE bronze.canal_venta (
+                     ^
+
+[SQL: 
+CREATE TABLE bronze.canal_venta (
+	"CODIGO" BIGINT, 
+	"DESCRIPCION" TEXT
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-02-25 20:33:46,345 - MainThread - MainProcess - ERROR - Error loading data cliente: (psycopg2.errors.InvalidSchemaName) schema "bronze" does not exist
+LINE 2: CREATE TABLE bronze.cliente (
+                     ^
+
+[SQL: 
+CREATE TABLE bronze.cliente (
+	"ID" BIGINT, 
+	"Provincia" TEXT, 
+	"Nombre_y_Apellido" TEXT, 
+	"Domicilio" TEXT, 
+	"Telefono" TEXT, 
+	"Edad" BIGINT, 
+	"Localidad" TEXT, 
+	"X" TEXT, 
+	"Y" TEXT, 
+	"Fecha_Alta" TEXT, 
+	"Usuario_Alta" TEXT, 
+	"Fecha_Ultima_Modificacion" TEXT, 
+	"Usuario_Ultima_Modificacion" TEXT, 
+	"Marca_Baja" BIGINT, 
+	col10 FLOAT(53)
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-02-25 20:33:46,372 - MainThread - MainProcess - ERROR - Error loading data compra: (psycopg2.errors.InvalidSchemaName) schema "bronze" does not exist
+LINE 2: CREATE TABLE bronze.compra (
+                     ^
+
+[SQL: 
+CREATE TABLE bronze.compra (
+	"IdCompra" BIGINT, 
+	"Fecha" TEXT, 
+	"IdProducto" BIGINT, 
+	"Cantidad" BIGINT, 
+	"Precio" FLOAT(53), 
+	"IdProveedor" BIGINT
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-02-25 20:33:46,387 - MainThread - MainProcess - ERROR - Error loading data empleado: (psycopg2.errors.InvalidSchemaName) schema "bronze" does not exist
+LINE 2: CREATE TABLE bronze.empleado (
+                     ^
+
+[SQL: 
+CREATE TABLE bronze.empleado (
+	"ID_empleado" BIGINT, 
+	"Apellido" TEXT, 
+	"Nombre" TEXT, 
+	"Sucursal" TEXT, 
+	"Sector" TEXT, 
+	"Cargo" TEXT, 
+	"Salario" FLOAT(53)
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-02-25 20:33:46,409 - MainThread - MainProcess - ERROR - Error loading data gasto: (psycopg2.errors.InvalidSchemaName) schema "bronze" does not exist
+LINE 2: CREATE TABLE bronze.gasto (
+                     ^
+
+[SQL: 
+CREATE TABLE bronze.gasto (
+	"IdGasto" BIGINT, 
+	"IdSucursal" BIGINT, 
+	"IdTipoGasto" BIGINT, 
+	"Fecha" TEXT, 
+	"Monto" FLOAT(53)
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-02-25 20:33:46,420 - MainThread - MainProcess - ERROR - Error loading data producto: (psycopg2.errors.InvalidSchemaName) schema "bronze" does not exist
+LINE 2: CREATE TABLE bronze.producto (
+                     ^
+
+[SQL: 
+CREATE TABLE bronze.producto (
+	"ID_PRODUCTO" BIGINT, 
+	"Concepto" TEXT, 
+	"Tipo" TEXT, 
+	"Precio " FLOAT(53)
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-02-25 20:33:46,429 - MainThread - MainProcess - ERROR - Error loading data proveedor: (psycopg2.errors.InvalidSchemaName) schema "bronze" does not exist
+LINE 2: CREATE TABLE bronze.proveedor (
+                     ^
+
+[SQL: 
+CREATE TABLE bronze.proveedor (
+	"IDProveedor" BIGINT, 
+	"Nombre" TEXT, 
+	"Address" TEXT, 
+	"City" TEXT, 
+	"State" TEXT, 
+	"Country" TEXT, 
+	departamen TEXT
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-02-25 20:33:46,440 - MainThread - MainProcess - ERROR - Error loading data sucursal: (psycopg2.errors.InvalidSchemaName) schema "bronze" does not exist
+LINE 2: CREATE TABLE bronze.sucursal (
+                     ^
+
+[SQL: 
+CREATE TABLE bronze.sucursal (
+	"ID" BIGINT, 
+	"Sucursal" TEXT, 
+	"Direccion" TEXT, 
+	"Localidad" TEXT, 
+	"Provincia" TEXT, 
+	"Latitud" TEXT, 
+	"Longitud" TEXT
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-02-25 20:33:46,449 - MainThread - MainProcess - ERROR - Error loading data tipo_gasto: (psycopg2.errors.InvalidSchemaName) schema "bronze" does not exist
+LINE 2: CREATE TABLE bronze.tipo_gasto (
+                     ^
+
+[SQL: 
+CREATE TABLE bronze.tipo_gasto (
+	"IdTipoGasto" BIGINT, 
+	"Descripcion" TEXT, 
+	"Monto_Aproximado" BIGINT
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-02-25 20:33:46,548 - MainThread - MainProcess - ERROR - Error loading data venta: (psycopg2.errors.InvalidSchemaName) schema "bronze" does not exist
+LINE 2: CREATE TABLE bronze.venta (
+                     ^
+
+[SQL: 
+CREATE TABLE bronze.venta (
+	"IdVenta" BIGINT, 
+	"Fecha" TEXT, 
+	"Fecha_Entrega" TEXT, 
+	"IdCanal" BIGINT, 
+	"IdCliente" BIGINT, 
+	"IdSucursal" BIGINT, 
+	"IdEmpleado" BIGINT, 
+	"IdProducto" BIGINT, 
+	"Precio" FLOAT(53), 
+	"Cantidad" FLOAT(53)
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-02-25 20:35:08,210 - MainThread - MainProcess - INFO - Data canal_venta loaded correctly
+2024-02-25 20:35:08,725 - MainThread - MainProcess - INFO - Data cliente loaded correctly
+2024-02-25 20:35:09,623 - MainThread - MainProcess - INFO - Data compra loaded correctly
+2024-02-25 20:35:09,756 - MainThread - MainProcess - INFO - Data empleado loaded correctly
+2024-02-25 20:35:10,232 - MainThread - MainProcess - INFO - Data gasto loaded correctly
+2024-02-25 20:35:10,310 - MainThread - MainProcess - INFO - Data producto loaded correctly
+2024-02-25 20:35:10,399 - MainThread - MainProcess - INFO - Data proveedor loaded correctly
+2024-02-25 20:35:10,510 - MainThread - MainProcess - INFO - Data sucursal loaded correctly
+2024-02-25 20:35:10,588 - MainThread - MainProcess - INFO - Data tipo_gasto loaded correctly
+2024-02-25 20:35:14,281 - MainThread - MainProcess - INFO - Data venta loaded correctly
+2024-02-25 21:26:04,776 - MainThread - MainProcess - INFO - Data canal_venta loaded correctly
+2024-02-25 21:26:05,305 - MainThread - MainProcess - INFO - Data cliente loaded correctly
+2024-02-25 21:26:06,146 - MainThread - MainProcess - INFO - Data compra loaded correctly
+2024-02-25 21:26:06,224 - MainThread - MainProcess - INFO - Data empleado loaded correctly
+2024-02-25 21:26:06,586 - MainThread - MainProcess - INFO - Data gasto loaded correctly
+2024-02-25 21:26:06,665 - MainThread - MainProcess - INFO - Data producto loaded correctly
+2024-02-25 21:26:06,742 - MainThread - MainProcess - INFO - Data proveedor loaded correctly
+2024-02-25 21:26:06,820 - MainThread - MainProcess - INFO - Data sucursal loaded correctly
+2024-02-25 21:26:06,887 - MainThread - MainProcess - INFO - Data tipo_gasto loaded correctly
+2024-02-25 21:26:10,515 - MainThread - MainProcess - INFO - Data venta loaded correctly

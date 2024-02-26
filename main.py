@@ -2,18 +2,10 @@
 from sqlalchemy import exc
 import pandas as pd
 from loaders import RawLoader
-import logging
+from logger import Logger
 from cfg import paths_dict, delimiter, SOURCE_PATH
 
-
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(threadName)s - %(processName)s - %(levelname)s - %(message)s",
-    filename="registry.log",
-    filemode="a",
-)
-
-log = logging.getLogger()
+log = Logger()
 
 
 def run_load():
@@ -36,6 +28,8 @@ def run_load():
         except Exception as e:
             # General exceptions
             log.error(f"Unexpected error: {e}")
+            
+
 
 
 if __name__ == "__main__":
