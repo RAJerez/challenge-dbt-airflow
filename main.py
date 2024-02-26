@@ -1,4 +1,3 @@
-# This script load the raw data into database
 from sqlalchemy import exc
 import pandas as pd
 from loaders import RawLoader
@@ -22,14 +21,12 @@ def run_load():
             log.info(f"Data {name} loaded correctly")
 
         except exc.SQLAlchemyError as e:
-            # SQLAlchemy Specific Errors
+
             log.error(f"Error loading data {name}: {e}")
 
         except Exception as e:
-            # General exceptions
-            log.error(f"Unexpected error: {e}")
-            
 
+            log.error(f"Unexpected error: {e}")
 
 
 if __name__ == "__main__":

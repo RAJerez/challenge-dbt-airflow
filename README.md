@@ -24,7 +24,7 @@ Minio is an open-source object storage system. It is used to store the CSV files
 ## Project Structure
 ```bash
 minio-dbt-airflow/
-├── airflow
+├── airflow/
 │   ├── config
 │   ├── dags
 │   ├── docker
@@ -33,7 +33,7 @@ minio-dbt-airflow/
 │   ├── logs  
 │   ├── plugins
 │
-├── dbt
+├── dbt/
 │   ├── dbt_airflow
 │   │   ├── models
 │   │   │   ├── bronze
@@ -44,19 +44,14 @@ minio-dbt-airflow/
 │   ├── logs
 │   └── profiles.yml
 │
-├── minio
+├── minio/
 │   └── docker
 │       ├── Dockerfile
 │       └── requirements.txt
 │
-├── scripts
-│   ├── loaders.py
-│   ├── main.py
-│   └── minio.py
-│
 ├── cfg.py
-├── constants.py
-├── csv_data
+├── main.py
+├── raw_data
 ├── docker-compose.yaml
 └── README.md
 

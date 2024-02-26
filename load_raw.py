@@ -1,7 +1,13 @@
-# This script load the raw data to MinIO
 from minio_lib import MinIO
 from logger import Logger
-from cfg import BUCKET, ENDPOINT_URL, MINIO_ACCESS_KEY, MINIO_SECRET_KEY, SOURCE_PATH, paths_dict
+from cfg import (
+    BUCKET,
+    ENDPOINT_URL,
+    MINIO_ACCESS_KEY,
+    MINIO_SECRET_KEY,
+    SOURCE_PATH,
+    paths_dict,
+)
 
 log = Logger()
 
@@ -12,25 +18,20 @@ aws_secret_key = MINIO_SECRET_KEY
 
 
 def create_bucket_load_raw():
-    # Instanciar la clase MinIO
+
     minio_client = MinIO(BUCKET, endpoint_url, aws_access_key, aws_secret_key)
 
-    # Crear el bucket
     minio_client.create_bucket()
 
-    # Cargar archivos
     for name, file in paths_dict.items():
         local_file_path = SOURCE_PATH + file
         key = f"bronze/{file}"
         minio_client.load_files(local_file_path, key)
         log.info(f"Loading file {name}...")
-    
+
+
 if __name__ == "__main__":
     create_bucket_load_raw()
-
-
-
-
 
 
 ## Upload a file to the bucket
